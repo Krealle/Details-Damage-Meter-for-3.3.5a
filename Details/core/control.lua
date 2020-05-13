@@ -524,6 +524,20 @@
 							bossFunction()
 						end
 					end
+
+					if (_details.table_current.instance_type == "raid") then	
+						--> schedule captures off	
+
+						_details:CaptureSet(false, "damage", false, 15)	
+						_details:CaptureSet(false, "heal", false, 15)	
+						_details:CaptureSet(false, "aura", false, 15)	
+						_details:CaptureSet(false, "energy", false, 15)	
+						_details:CaptureSet(false, "spellcast", false, 15)	
+
+						if (_details.debug) then	
+							_details:Msg("(debug) freezing parser for 15 seconds.")	
+						end	
+					end
 					
 					--> schedule sync
 					_details:EqualizeActorsSchedule(_details.host_of)
